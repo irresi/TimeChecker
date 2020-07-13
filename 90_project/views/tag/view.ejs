@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../header"); -%>
+  <style>
+    .active-pink-2 input.form-control[type=text]:focus:not([readonly]) {
+      border-bottom: 1px solid #f48fb1;
+      box-shadow: 0 1px 0 0 #f48fb1;
+    }
+  </style>
+<body>
+  <%- include("../menu"); -%>
+  <%- include("../style"); -%>
+    <!-- 상세 조회 -->
+    
+   <% var Hour=0, Minute=0; %>
+  <div class="container-fluid">
+        <form id="createForm">
+          <div class="container">
+            <div class="row" style="padding:200px;">
+            
+              <div class="col-12"><h2 class="text-show-fastly">Search #tag</h2></div>
+              <div class="col-12">
+                  <form class ="search">
+                        <div class="input-group">
+                            <input type="text" class="search-query form-control" placeholder="Search tag" 
+                            maxlength=255 name='search'/>
+                            <span class="input-group-btn">
+                                <button class = "img-button" type="submit" onclick="Search();">
+                                    <span class="fa fa-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+          </div>
+          <div class="container">
+            <table class="table table-striped table-bordered">
+              <tr>
+                <th><a class="listfont-sm">[이름]</a></th>
+                <th><a class="listfont-sm">[시작 시간]</a></th>
+                <th><a class="listfont-sm">[끝 시간]</a></th>
+                <th><a class="listfont-sm">[삭제]</a></th>
+              </tr>
+              <% let sh=0,eh=0,sm=0,em=0;%>
+              <% result.forEach(event =>{ %>
+              <tr>
+    
+                <td>
+                  <a class="listfont-sm" onclick="location.href='/api/event/<%=event._id%>/id'">
+                    <%= event.Name%>
+                  </a>
+                </td>
+                <td>
+                  <a class="listfont-sm" onclick="location.href='/api/event/<%=event._id%>/id'">
+                    <%= event.created.getMonth()+1%>월
+                    <%= event.created.getDate()%>일
+                    <%= event.StartString %>
+                  </a>
+                </td>
+                <td>
+                  <a class="listfont-sm" onclick="location.href='/api/event/<%=event._id%>/id'">
+                    <%= event.created.getMonth()+1%>월
+                    <%= event.created.getDate()%>일
+                    <%= event.EndString %>
+                  </a>
+                </td>
+                <td>
+                <a style="color:red;" onclick="location.href='/api/event/<%=event._id%>/delete'">삭제하기</a>
+                </td>
+                <% sh=Number(event.StartString.substring(0,2));%>
+                <%   sm=Number(event.StartString.substring(3,5));%>
+                <%   eh=Number(event.EndString.substring(0,2));%>
+                <%   em=Number(event.EndString.substring(3,5));%>
+                <%   Minute+=(eh-sh)*60+em-sm;%>
+              </tr>
+              <%})%>
+            </table>
+            <table class="table table-hover table-bordered">
+              <tr><th style="text-align:center; font-size:20px;">총시간</th></tr>
+              <% Hour=parseInt(Minute/60);Minute%=60;%>
+              <tr><td style="text-align:center; font-size:20px;"><%=Hour %>시간<%=Minute %>분</td></tr>
+            </table>
+          </div>
+        </form>
+  </div>
+  <%- include("../footer"); %>  
+
+  <script>
+    const Searching = Search.prototype;
+    function Search(){
+      console.log('searched');
+      this.keyword = document.querySelector('input[name="search"]');
+      this.button = document.querySelector('img-button');
+      this.form = document.querySelector('.search')
+    }
+    new Search();
+    Searching.Engine = function(){
+      this.form.addEventListener('submit', e=>{
+        e.preventDefault();
+        let keyword = this.keyword.value;
+        console.log(keyword);
+      })
+    }
+  </script>
+  
+</body>
+</html>

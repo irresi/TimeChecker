@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+
+<html>
+
+    <%- include("header"); -%>
+    <%- include("style"); -%>    
+    <%- include("menu"); -%>
+<body data-spy="scroll" data-target="#navbar1" data-offset="60">
+        <div class="col-12 p-0 bg-dark vh-50 py-5">
+            <div class="container">
+                  
+                <div class="row">
+                    <div class="col text-light">
+                      <h1 class="text-show-slowly">
+                          <span style="font-size: 96px;">
+                            Time check
+                          </span>
+                      </h1>
+
+                      <p>
+                        <span>
+                            제1조 ①대한민국은 민주공화국이다.<br>
+
+②대한민국의 주권은 국민에게 있고, 모든 권력은 국민으로부터 나온다.<br>
+
+ 제2조 ①대한민국의 국민이 되는 요건은 법률로 정한다.<br>
+
+②국가는 법률이 정하는 바에 의하여 재외국민을 보호할 의무를 진다.<br>
+
+ 제3조 대한민국의 영토는 한반도와 그 부속도서로 한다.<br>
+
+ 제4조 대한민국은 통일을 지향하며, 자유민주적 기본질서에 입각한 평화적 통일 정책을 수립하고 이를 추진한다.<br>
+
+ 제5조 ①대한민국은 국제평화의 유지에 노력하고 침략적 전쟁을 부인한다.<br>
+
+②국군은 국가의 안전보장과 국토방위의 신성한 의무를 수행함을 사명으로 하며, 그 정치적 중립성은 준수된다.<br>
+
+                        </span>
+                      </p>
+                      <a class="btn btn-outline-light btn-lg" href="http://www.law.go.kr/lsEfInfoP.do?lsiSeq=61603#" target="_new">전문보기</a>                                   
+                    </div> 
+                    
+                </div>
+            </div>
+        </div>
+        <p>&nbsp;</p> 
+            <div class="container">
+                <textarea class="lead mb-3 w-75" style="color:black" style="width:100%; font-size:larger" rows="10"><%= result.str %></textarea>
+            </div>
+            <p>&nbsp;</p>
+            <div class="container">
+                <div class="row">
+                    <button type="button" class="btn btn-outline-secondary btn-rounded waves-effect" onclick="location.href='/api/event'"
+                    style="width:30%;"> 
+                        <p></p>
+                        <span style="font-size:36px;">&nbsp;&nbsp;계획등록&nbsp;&nbsp;</span>  
+                        <p></p>
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-secondary btn-rounded waves-effect " onclick="location.href='/api/tag'" 
+                    style="width:30%;">
+                        <p></p>
+                        <span style="font-size:36px;">&nbsp;&nbsp;태그로 검색&nbsp;&nbsp;</span>  
+                        <p></p>
+                    </button>
+
+                    <button type="button" class="btn btn-outline-secondary btn-rounded waves-effect " onclick="location.href='/api/goal'" 
+                    style="width:30%;">
+                        <p></p>
+                        <span style="font-size:36px;">&nbsp;&nbsp;메모하기&nbsp;&nbsp;</span>  
+                        <p></p>
+                    </button>
+                    
+                    
+                </div>
+            </div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="scripts.js"></script>
+</body>
+</html>

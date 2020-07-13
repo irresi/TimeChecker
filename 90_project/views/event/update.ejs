@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../header"); -%>
+<body>
+  <%- include("../menu"); -%>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 p-0 bg-dark vh-50 py-5">
+      <!-- 상세 조회 -->
+      <form id="updateForm">
+        <!-- Material input -->
+        <div class="container">
+          <div class="row">
+            <div class="md-form">
+              <input 
+              type="text" 
+              id="director" 
+              class="form-control" 
+              value="<%= result.director %>"
+              required/>
+              <label for="director">Input director</label>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="md-form">
+              <input 
+              type="text" 
+              id="title" 
+              class="form-control" 
+              value="<%= result.title %>"
+              required/>
+              <label for="title">Input Title</label>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="md-form">
+              <input 
+              type="text" 
+              id="year" 
+              class="form-control" 
+              value="<%= result.year %>"
+              required/>
+              <label for="title">Input year</label>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <button type="submit" 
+            class="btn btn-outline-info btn-rounded waves-effect"
+            onclick='eventpost();'
+            >저장
+            </button>
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  <%- include("../footer"); %>  
+
+  <script>
+    
+    
+    function eventpost(){
+        event.preventDefault();
+        // 등록
+        const Name = $("#Name").val();
+        const tag = $("#tag").val();
+        const StartTime = $("#StartTime").val();
+        const EndTime = $("#EndTime").val();
+        console.log(typeof(StartTime),EndTime);
+        $.ajax({
+          url:"/api/event/",
+          type:"PUT",
+          data: {Name, tag, StartTime, EndTime},
+        }).done(()=>{
+          location.href="/api/event";
+        }).fail((request, status, error)=>{
+          alert(request.responseText);
+        });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<style>
+    .listfont{
+        font-size:24px;
+        font-weight: 700;
+        font-family: Georgia;
+        color:white;
+        padding-bottom:10px;
+    }
+    .listfont-sm{
+        font-size:16px;
+        font-weight: 500;
+        font-family: Georgia;
+        color:black;
+    }
+    .listfont2{
+        font-size:24px;
+        font-weight: 700;
+        font-family: Georgia;
+        color:black;
+    }
+    .listfont-sm-bold{
+        font-size:12px;
+        font-weight: 1000;
+        font-family: Georgia;
+        color:white;
+    }
+  .text-show-slowly{
+    
+    animation: fadein 3s;
+    -moz-animation: fadein 3s;
+    /* Firefox */
+    -webkit-animation: fadein 3s;
+    /* Safari and Chrome */
+    -o-animation: fadein 3s;
+    /* Opera */
+  }
+  .text-show-fastly{
+    
+    animation: fadein 1.5s;
+    -moz-animation: fadein 1.5s;
+    /* Firefox */
+    -webkit-animation: fadein 1.5s;
+    /* Safari and Chrome */
+    -o-animation: fadein 1.5s;
+    /* Opera */
+  }
+  @keyframes fadein {
+      from {
+          opacity: 0;
+      }
+
+      to {
+          opacity: 1;
+      }
+  }
+
+  @-moz-keyframes fadein {
+
+      /* Firefox */
+      from {
+          opacity: 0;
+      }
+
+      to {
+          opacity: 1;
+      }
+  }
+
+  @-webkit-keyframes fadein {
+
+      /* Safari and Chrome */
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+
+  @-o-keyframes fadein {
+
+      /* Opera */
+      from {
+          opacity: 0;
+      }
+
+      to {
+          opacity: 1;
+
+      }
+  }
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+#custom-search-input {
+    margin:0;
+    margin-top: 10px;
+    padding: 0;
+}
+ 
+#custom-search-input .search-query {
+    width:100%;
+    padding-right: 3px;
+    padding-left: 15px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 0;
+}
+ 
+#custom-search-input button {
+    border: 0;
+    background: none;
+    /** belows styles are working good */
+    padding: 2px 5px;
+    margin-top: 2px;
+    position: absolute;
+    right:0;
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color:#D9230F;
+    cursor: unset;
+    z-index: 2;
+}
+ 
+.search-query:focus{
+    z-index: 0;   
+}
+
+</style>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../header"); -%>
+<body>
+  <%- include("../menu"); -%>
+  <%- include("../style"); -%>
+    <!-- 상세 조회 -->
+    
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 p-0 bg-dark vh-50 py-5">
+        <form>
+          <div class="container">
+            <div class="row">
+                <!-- Material input -->
+                <div class="md-form">
+                  <input type="text" 
+                  id="Name" 
+                  class="form-control form-control-lg"
+                  style="font-size:24px;color:white;" 
+                  value=<%=result.Name%>
+                  required/>
+                  
+                  <label for="Name" >Input Name</label>
+                </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+                <!-- Material input -->
+                <div class="md-form">
+                  <input type="text" 
+                  id="tag" 
+                  class="form-control form-control-lg" 
+                  style="font-size:24px;color:white;" 
+                  value=<%=result.tag%>
+                  required/>
+                  <label for="tag" >Input tag</label>
+                </div>
+            </div>
+          </div>
+          <p>&nbsp;</p>
+          <div class="container">
+            <div class="row">
+              <form>
+                
+                <p><input type="time" 
+                  id='StartString'
+                  style="font-size:20px;"
+                  value=<%= result.StartString %>>
+                </p>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <p><input type="time" 
+                  id='EndString'
+                  style="font-size:20px;"
+                  value=<%= result.EndString %>></p>
+              </form>
+            </div>
+          </div>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <div class="container">
+            <div class="row">
+              <button type="submit" class="btn btn-outline-info btn-rounded waves-effect"
+              onclick='updatepost();'
+              >저장
+              </button>
+            </div>
+          </div> 
+          
+        </form>
+      </div>
+    </div>
+  </div>
+  <%- include("../footer"); %>  
+
+  <script>
+    function updatepost(){
+        console.log("submit");
+        event.preventDefault();
+        // 등록
+        const Name = $("#Name").val();
+        const tag = $("#tag").val();
+        const StartString = $("#StartString").val();
+        const EndString = $("#EndString").val();
+        $.ajax({
+          url:"/api/event/<%=result._id%>",
+          type:"PUT",
+          data: {Name, tag, StartString, EndString},
+        }).done(()=>{
+          history.back();
+        }).fail((request, status, error)=>{
+          alert(request.responseText);
+        });
+    }
+    
+  </script>
+  
+</body>
+</html>
