@@ -1,0 +1,40 @@
+1. React
+: 페이스북에서 만든 Javascript 기반의 프론트엔드 라이브러리
+
+2. React 특징
+1) '컴포넌트'라고 불리는 작은 코드의 조각을 이용해서 UI를 구성한다.
+2) Virtual Dom(가상 Dom) 사용
+: 바뀐 데이터를 일단 그려놓고 비교를 한 후, 바뀐 부분만 리렌더링을 한다.
+ Dom의 변화를 최소화시켜서 성능을 높여줌
+3) JSX(Javascript XML) : HTML문법과 유사하게 작성하는 Javascript
+- const element = <div>Hello, React</div>;
+4) 상태 관리, 라우팅, API 통신을 위한 추가 라이브러리
+
+3. React를 배우기 전에 알아야 할 내용(react.js)
+1) spread 연산자
+2) 비구조화 할당
+3) 불변성 유지
+4) export, import
+
+4. React 작업 환경 준비
+1) Node.js
+2) Yarn : 개선된 버전의 npm
+3) npx create-react-app 71_basic 
+
+5. JSX 규칙 6가지
+
+6. 리액트에서 다루는 데이터
+1) props (properties)
+- 부모 컴포넌트가 자식 컴포넌트에게 주는 값
+- 자식 컴포넌트는 props 받아오기만 해야 함(read-only)
+
+2) state 
+- 컴포넌트 내부에서 선언해서 내부에서 값 변경 가능
+- 부모 컴포넌트의 state를 자식 컴포넌트에 props로 던져줌
+- 16.8부터 Hook이라는 기능이 도입되면서 함수형
+  컴포넌트에서도 state를 쓸 수 있게 됨
+
+7. 조건부 렌더링
+1) 조건이 참 또는 거짓인지에 따라 다른 결과물을 렌더링하는 경우
+    다른 결과물을 렌더링하는 경우 -> 삼항연산자
+2) 조건이 참인 경우에만 렌더링하는 경우 -> &&

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../header"); -%>
+<body>
+  <%- include("../menu"); -%>
+    <!-- 상세 조회 -->
+    <!-- Material input -->
+    <div class="md-form">
+      <input type="text" id="singer" class="form-control" value="<%=result.singer%>" readonly/>
+      <label for="singer">Singer</label>
+    </div>
+    <div class="md-form">
+      <input type="text" id="title" class="form-control" value="<%=result.title%>" readonly/>
+      <label for="title">Title</label>
+    </div>
+    <button type="button" class="btn btn-outline-info btn-rounded waves-effect"
+    onclick="location.href='/api/music'">목록</button>
+    <button type="button" class="btn btn-outline-info btn-rounded waves-effect"
+    onclick="location.href='/api/music/<%=result._id %>/edit'">수정</button>
+    <button 
+    id="deleteBtn"
+    type="button" 
+    class="btn btn-outline-info btn-rounded waves-effect"
+    >삭제</button>
+    
+  <%- include("../footer"); %>
+  <script>
+    $(function(){
+      $("#deleteBtn").on("click", ()=>{
+        const result = confirm("삭제됨");
+        
+        if(result){
+          
+          console.log("삭제 처리");     
+          $.ajax({
+            url:"/api/music/<%=result._id%>",
+            type:"Delete"
+          }).done(()=>{
+            location.href="/api/music";
+          }).fail((request, status, error)=>{
+            alert(request.responseText);
+          });
+        }
+        // 등록
+      })
+    })
+  </script>  
+</body>
+</html>
